@@ -1,0 +1,24 @@
+@startuml
+
+Restaurant "1" --> "1" Address
+Restaurant "1" --> "*" Product
+
+class Restaurant {
+   name : String
+   imageurl : String
+   address: Address
+}
+
+class Address {
+    name: String
+    postcode: String
+}
+
+class Product {
+    name: String
+    imageURl: String
+    description: String
+    price: number
+}
+
+@enduml
