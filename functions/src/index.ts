@@ -1,10 +1,6 @@
 import * as functions from 'firebase-functions';
 import * as https from 'https';
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Hello from Firebase!");
-});
-
 export const findPlace = functions.https.onRequest(async (request, response) => {
     return new Promise ((resolve, reject) => {
         const key = functions.config().gmaps.key;

@@ -1,24 +1,44 @@
 @startuml
 
-Restaurant "1" --> "1" Address
-Restaurant "1" --> "*" Product
+Location "1" --> "1" LocationDetail
+Location "1" --> "*" Product
 
-class Restaurant {
-   name : String
-   imageurl : String
-   address: Address
+class Location {
+    name : String
+    imageurl : String
+    city: String
+    street: String
+    postcode: String
+    type: LocationType
 }
 
-class Address {
-    name: String
-    postcode: String
+enum LocationType
+{
+    BAR
+    CAFE
+}
+
+class LocationDetail {
+    ownerName: String
+    donationLink: String
+    description: String
+    lat: number
+    lng: number
+    googlePlaceId: String
+    website: String
 }
 
 class Product {
     name: String
-    imageURl: String
-    description: String
     price: number
+    type: ProductType
+}
+
+enum ProductType {
+    COFFEE
+    CAKE
+    BEER
+    BURGER
 }
 
 @enduml
