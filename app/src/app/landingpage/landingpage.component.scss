@@ -1,6 +1,45 @@
-.background {
-  background-image: '../../../assets/images/logo-splashscreen.png';
+.landingpage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container--top, .container--bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.container--top {
+  flex: 4;
+  justify-content: flex-end;
+}
+
+.container--bottom {
+  flex: 3;
+  justify-content: flex-start;
+}
+
+.logo {
+  background-image: url("../../assets/images/logo-splashscreen.png");
+  width: 80%;
+  height: 225px;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
+}
+
+.claim {
+  font-weight: bold;
+}
+
+.description-text {
+  // TODO: collect colors in dedicated file
+  color: grey;
+  font-weight: 300;
+  font-size: .9em;
+}
+
+.next {
+  align-self: flex-end;
 }

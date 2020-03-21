@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { RouterModule, Routes } from '@angular/router';
+import { MatButtonModule } from "@angular/material/button"
 import { environment } from '../environments/environment';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-import { RouterModule, Routes } from '@angular/router';
 import { SearchRestaurantComponent } from './search-restaurant/search-restaurant.component';
 import { PlacePageComponent } from './place-page/place-page.component';
 import { CreatePlaceComponent } from './create-place/create-place.component';
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    MatButtonModule,
     // other imports here
   ],
   providers: [],
