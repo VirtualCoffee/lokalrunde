@@ -5,8 +5,4 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: './landingpage.component.html',
   styleUrls: ['./landingpage.component.scss']
 })
-export class LandingpageComponent {
-
-  @Output() next = new EventEmitter();
-
-}
+export class LandingpageComponent {}

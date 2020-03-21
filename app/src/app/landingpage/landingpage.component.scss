@@ -4,7 +4,8 @@
   flex-direction: column;
 }
 
-.container--top, .container--bottom {
+.container--top,
+.container--bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,13 +34,35 @@
   font-weight: bold;
 }
 
+%text {
+  opacity: .6;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+
 .description-text {
-  // TODO: collect colors in dedicated file
-  color: grey;
+  @extend %text;
   font-weight: 300;
-  font-size: .9em;
+}
+
+.vendor-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+  & * {
+    vertical-align: middle;
+  }
+}
+
+.powered-by {
+  @extend %text;
+  margin-right: 10px;
 }
 
 .next {
-  align-self: flex-end;
+  margin-top: 45px;
+  align-self: stretch;
 }
