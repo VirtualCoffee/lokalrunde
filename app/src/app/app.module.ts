@@ -7,13 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-import { PageModule } from './page/page.module';
-
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LandingpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,9 +21,10 @@ import { PageModule } from './page/page.module';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    PageModule,
+    // other imports here
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
