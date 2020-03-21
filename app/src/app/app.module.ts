@@ -26,9 +26,10 @@ const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchPlaceComponent },
+  { path: 'place/create', component: CreatePlaceComponent },
   { path: 'place/:id', component: PlacePageComponent },
-  { path: 'createPlace', component: CreatePlaceComponent },
-  { path: 'donate', component: DonateComponent },
+  { path: 'place/:id/donate', component: DonateComponent },
+  { path: 'place/:id/completed-donation', component: DonateComponent },
 ];
 
 @NgModule({
