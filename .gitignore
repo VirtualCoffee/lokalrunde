@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# Firebase - local
+.firebase/
+
 # Log file
 *.log
 
