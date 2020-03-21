@@ -31,3 +31,6 @@ https://helfen.berlin/
 - Seite zur Bekämpfung von Hunger
 https://sharethemeal.org/de/
 
+## Ansatz:
+
+Möglichkeit für Stammkunden ihr (lokales) Café, Restaurant oder ihre Lieblingskneipe, ihr Stammbäcker und weitere mit Spenden in Form von virtuellen Bestellungen (z.B. ein virtueller Kaffee), und Vorbestellungen/Gutscheinkäufen zu unterstützen.
