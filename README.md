@@ -1,4 +1,8 @@
-![image](app/src/assets/images/logo-splashscreen.png)
+![image](app/src/assets/images/logo-splashscreen.png) 
+
+im Rahmen von
+
+![image](app/src/assets/images/wirvsvirus_logo.png)
 
 
 ## Problem:
