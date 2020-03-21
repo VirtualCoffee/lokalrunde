@@ -14,6 +14,7 @@ import { MatToolbarModule } from "@angular/material/toolbar"
 import { MatDividerModule } from "@angular/material/divider"
 import { MatCardModule } from "@angular/material/card"
 import { MatGridListModule } from "@angular/material/grid-list"
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { environment } from '../environments/environment';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { SearchPlaceComponent } from './search-place/search-place.component';
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatGridListModule,
     MatDividerModule,
+    MatProgressSpinnerModule
     // other imports here
   ],
   providers: [],

@@ -1,6 +1,6 @@
 export interface LRLocation {
-    name : string;
-    imageurl : string;
+    name: string;
+    imageUrl: string;
     city: string;
     street: string;
     postcode: string;
