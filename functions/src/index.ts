@@ -10,6 +10,7 @@ export const findPlace = functions.https.onRequest(async (request, response) => 
         const req = https.get(url);
 
         req.on('response', res => {
+
             res.on('data', (d: any) => {
                 response.send(d);
                 resolve(res);

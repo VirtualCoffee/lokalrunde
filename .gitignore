@@ -34,3 +34,5 @@ hs_err_pid*
 
 .gradletasknamecache
 .DS_Store
+
+/app/src/environments/environment.ts

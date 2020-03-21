@@ -8,9 +8,15 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from "@angular/material/button"
+import { MatIconModule } from "@angular/material/icon"
+import { MatInputModule } from "@angular/material/input"
+import { MatToolbarModule } from "@angular/material/toolbar"
+import { MatDividerModule } from "@angular/material/divider"
+import { MatCardModule } from "@angular/material/card"
+import { MatGridListModule } from "@angular/material/grid-list"
 import { environment } from '../environments/environment';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-import { SearchRestaurantComponent } from './search-restaurant/search-restaurant.component';
+import { SearchPlaceComponent } from './search-place/search-place.component';
 import { PlacePageComponent } from './place-page/place-page.component';
 import { CreatePlaceComponent } from './create-place/create-place.component';
 import { LoginComponent } from './login/login.component';
@@ -19,7 +25,7 @@ import { DonateComponent } from './donate/donate.component';
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'search', component: SearchRestaurantComponent },
+  { path: 'search', component: SearchPlaceComponent },
   { path: 'place/:id', component: PlacePageComponent },
   { path: 'createPlace', component: CreatePlaceComponent },
   { path: 'donate', component: DonateComponent },
@@ -29,7 +35,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LandingpageComponent,
-    SearchRestaurantComponent,
+    SearchPlaceComponent,
     PlacePageComponent,
     CreatePlaceComponent,
     LoginComponent,
@@ -46,6 +52,12 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatInputModule,
+    MatCardModule,
+    MatGridListModule,
+    MatDividerModule,
     // other imports here
   ],
   providers: [],
