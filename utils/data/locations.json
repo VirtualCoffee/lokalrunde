@@ -9,7 +9,7 @@
       "zipCode": "79098"
     },
     "details": {
-      "donationLink": "paypal.me/schlappen",
+      "donationLink": "https://paypal.me/schlappen",
       "ownerName": "Karl Mustermann",
       "latitude": 47.9939836,
       "longitude": 7.8486891,
@@ -21,12 +21,74 @@
       {
         "name": "Bier",
         "type": "BEER",
-        "price": 3
+        "price": 3.5
       },
       {
         "name": "Burger",
         "type": "BURGER",
         "price": 10.0
+      }
+    ]
+  },
+  {
+    "document": {
+      "name": "Klimperkiste",
+      "type": "BAR",
+      "imageUrl": "https://lh5.googleusercontent.com/p/AF1QipNhNKmmKkjzjfd-CoMunFkG_BmAojjhpEekZ2dQ",
+      "city": "Hamburg",
+      "street": "Esplanade 18",
+      "zipCode": "20354"
+    },
+    "details": {
+      "donationLink": "https://paypal.me/klimperkiste",
+      "ownerName": "Beate Geistler",
+      "latitude": 53.5577778,
+      "longitude": 9.9905556,
+      "description": "Since 1949 eine Schlichte,Schnörkellose Kneipe im Herzen von Sankt Pauli. Nur Bargeld, primär Flaschenbier mit musikalischer Beschallung aus der Jukebox!",
+      "googlePlaceId": "bba7207fe0577e20ede2b2b4da3c8593db40d8aa",
+      "website": "https://klimperkiste.com/"
+    },
+    "products": [
+      {
+        "name": "Bier",
+        "type": "BEER",
+        "price": 3.5
+      },
+      {
+        "name": "Burger",
+        "type": "BURGER",
+        "price": 10.0
+      }
+    ]
+  },
+  {
+    "document": {
+      "name": "Cafe Lotti",
+      "type": "CAFE",
+      "imageUrl": "https://lh5.googleusercontent.com/p/AF1QipPbYmNXLOYM5WNl1FwlU46aAIEl9qYrKn2g99k6",
+      "city": "München",
+      "street": "Schleißheimer Str. 13",
+      "zipCode": "80333"
+    },
+    "details": {
+      "donationLink": "https://paypal.me/cafelotti",
+      "ownerName": "Mato Maric",
+      "latitude": 48.1496501,
+      "longitude": 11.5594289,
+      "description": "Selbstgemachte Kuchen und Kaffee von der Kaffeerösterei Dinzler.",
+      "googlePlaceId": "50d9a65b44467334cf061e9061516cf749f1b6df",
+      "website": "https://cafe-lotti.cafe"
+    },
+    "products": [
+      {
+        "name": "Kaffee",
+        "type": "COFFEE",
+        "price": 2.5
+      },
+      {
+        "name": "Kuchen",
+        "type": "CAKE",
+        "price": 5.0
       }
     ]
   }

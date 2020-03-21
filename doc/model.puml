@@ -5,10 +5,10 @@ Location "1" --> "*" Product
 
 class Location {
     name : String
-    imageurl : String
+    imageUrl : String
     city: String
     street: String
-    postcode: String
+    zipCode: String
     type: LocationType
 }
 
@@ -22,8 +22,8 @@ class LocationDetail {
     ownerName: String
     donationLink: String
     description: String
-    lat: number
-    lng: number
+    latitude: number
+    longitude: number
     googlePlaceId: String
     website: String
 }
