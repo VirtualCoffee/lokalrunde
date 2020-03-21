@@ -1,0 +1,33 @@
+[
+  {
+    "document": {
+      "name": "Schlappen",
+      "type": "BAR",
+      "imageUrl": "https://lh5.googleusercontent.com/p/AF1QipPWNRUJbNiS0h0pz5XKWOl7D-yyAsxs7AdMcBsc",
+      "city": "Freiburg im Breisgau",
+      "street": "Löwenstraße 2",
+      "zipCode": "79098"
+    },
+    "details": {
+      "donationLink": "paypal.me/schlappen",
+      "ownerName": "Karl Mustermann",
+      "latitude": 47.9939836,
+      "longitude": 7.8486891,
+      "description": "Gemütliche Kneipe mit historischem Flair. Gutes, preisgünstiges Essen. Große Auswahl an Bieren. Enormes Angebot an Gin und Malt-Whisky",
+      "googlePlaceId": "58e44074b0484724bb5f96420488623d054a9c43",
+      "website": "https://schlappen.com/"
+    },
+    "products": [
+      {
+        "name": "Bier",
+        "type": "BEER",
+        "price": 3
+      },
+      {
+        "name": "Burger",
+        "type": "BURGER",
+        "price": 10.0
+      }
+    ]
+  }
+]
