@@ -5,7 +5,7 @@ Location "1" --> "*" Product
 
 class Location {
     name : String
-    imageurl : String
+    imageUrl : String
     city: String
     street: String
     zipCode: String

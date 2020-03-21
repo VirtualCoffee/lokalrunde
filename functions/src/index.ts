@@ -9,9 +9,12 @@ export const findPlace = functions.https.onRequest(async (request, response) => 
         
         const req = https.get(url);
 
+        let data = '';
+
         req.on('response', res => {
             res.on('data', (d: any) => {
-                response.send(d);
+                data += d;
+                response.send(data);
                 resolve(res);
             });
         });
