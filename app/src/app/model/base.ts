@@ -4,7 +4,7 @@ export interface LRLocation {
     imageUrl: string;
     city: string;
     street: string;
-    postcode: string;
+    zipCode: string;
     type: LocationType;
 }
 
