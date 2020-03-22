@@ -7,13 +7,14 @@ import {
   LocationType
 } from "../model/base";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireFunctions } from "@angular/fire/functions";
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class FirebaseService {
-  constructor(public db: AngularFirestore) {}
+  constructor(public db: AngularFirestore, public func: AngularFireFunctions) {}
 
   public getPlaces(): any {
     return this.db.collection("locations").valueChanges({ idField: "id" });
@@ -118,13 +119,13 @@ export class FirebaseService {
         ];
         const productsBar: Product[] = [
           {
-            name: "Kaffee",
-            type: ProductType.COFFEE,
+            name: "Bier",
+            type: ProductType.BEER,
             price: 2.5
           },
           {
-            name: "Kuchen",
-            type: ProductType.CAKE,
+            name: "Burger",
+            type: ProductType.BURGER,
             price: 5.0
           },
           {
@@ -143,6 +144,26 @@ export class FirebaseService {
             await docRef.collection("products").add(product);
           });
         }
+
+        return docRef.id;
       });
   }
+
+  public getGooglePlace(googlePlaceId: string): Promise<{ data: GooglePlaceModule }> {
+    return this.func.functions.httpsCallable("place")({ googlePlaceId }) as Promise<any>;
+  }
+}
+
+type GooglePlaceModule = {
+  name: string
+  address: string
+  website: string
+  imageUrl: string
+  googlePlaceId: string
+  type: string
+  street: string
+  city: string
+  zipCode: string
+  latitude: number
+  longitude: number
 }

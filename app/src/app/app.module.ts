@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireFunctionsModule, REGION } from "@angular/fire/functions";
 import { RouterModule, Routes } from "@angular/router";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -21,6 +22,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { environment } from "../environments/environment";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
 import { SearchPlaceComponent } from "./search-place/search-place.component";
@@ -66,7 +68,7 @@ const appRoutes: Routes = [
   { path: "imprint", component: ImprintComponent },
   { path: "terms", component: TermsComponent },
   { path: "privacy", component: PrivacyComponent },
-  { path: "register/:googlePlaceID", component: RegisterPlaceComponent },
+  { path: "register/:googlePlaceId", component: RegisterPlaceComponent },
 ];
 
 @NgModule({
@@ -93,6 +95,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireFunctionsModule,
     RouterModule.forRoot(
       appRoutes,
     ),
@@ -111,10 +114,13 @@ const appRoutes: Routes = [
     ShareButtonsModule,
     MatMenuModule,
     MatDialogModule,
+    MatSnackBarModule,
     GooglePlaceModule
     // other imports here
   ],
-  providers: [],
+  providers: [
+      { provide: REGION, useValue: 'europe-west1' }
+  ],
   entryComponents: [AppComponent, EditDialog],
   bootstrap: [AppComponent]
 })

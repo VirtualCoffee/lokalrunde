@@ -57,7 +57,7 @@
       <input matInput required [(ngModel)]="paypal" placeholder="https:/paypal.me/meine_bar">
     </mat-form-field>
     
-    <button mat-raised-button color="primary" class="register-button" [disabled]="!valid()">Jetzt registrieren</button>
+    <button mat-raised-button color="primary" class="register-button" [disabled]="!valid()" (click)="registerPlace()">Jetzt registrieren</button>
   </div>
 
 </div>

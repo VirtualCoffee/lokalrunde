@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog"
+import { MatSnackBar } from "@angular/material/snack-bar"
 import { FirebaseService } from '../service/firebase.service';
-import { LRLocation } from "../../../../functions/src/model/base"
+import { LRLocation, LocationDetail, LocationType } from "../../../../functions/src/model/base"
 
 @Component({
   selector: 'app-register-place',
@@ -11,16 +12,43 @@ import { LRLocation } from "../../../../functions/src/model/base"
 })
 export class RegisterPlaceComponent {
 
-  public googlePlaceId: string;
-  public place?: LRLocation;
+  public place: Partial<LRLocation> = {};
+  public placeDetail: Partial<LocationDetail> = {};
   public type = "CAFE";
   public paypal = "";
 
-  constructor(route: ActivatedRoute, firebaseService: FirebaseService, private dialog: MatDialog) {
-    this.googlePlaceId = route.snapshot.paramMap.get("googlePlaceID");
-    firebaseService.getPlace(this.googlePlaceId).subscribe(result => {
-      this.place = result;
-    });
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private firebaseService: FirebaseService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {
+    const googlePlaceId = route.snapshot.paramMap.get("googlePlaceId");
+    
+    firebaseService.getGooglePlace(googlePlaceId).then((result) => {
+      const { data } = result;
+      this.place = {
+        googlePlaceId,
+        name: data.name,
+        imageUrl: data.imageUrl,
+        city: data.city,
+        street: data.street,
+        zipCode: data.zipCode,
+      }
+
+      this.placeDetail = {
+        lat: data.latitude,
+        lng: data.longitude,
+        website: data.website,
+      }
+
+      const type = (data.type || "cafe").toLowerCase();
+      this.type = type.includes("bar") ? "BAR" : "CAFE";
+    }).catch(err => {
+      console.error(err);
+    })
+    
   }
 
   public editField(field: string, title: string) {
@@ -38,13 +66,28 @@ export class RegisterPlaceComponent {
     return !!(
       this.place &&
       this.place.name &&
-      this.place.imageUrl &&
       this.paypal &&
       (this.paypal.match(/https:\/\/paypal\.me\/.+/) || this.paypal.match(/.+@.+\..+/))
     );
   }
 
+  registerPlace() {
+    this.firebaseService.addPlace({
+      ...(this.place as any),
+      type: this.type === "BAR" ? LocationType.BAR : LocationType.CAFE,
+    }, {
+      ...(this.placeDetail as any),
+      donationLink: this.paypal.match(/https:\/\/paypal\.me\/.+/) ? this.paypal : null,
+      paypalAccountReceiver: this.paypal.match(/.+@.+\..+/) ? this.paypal : null,
+    }).then(id => {
+      this.router.navigate([`place/${id}`]);
+    }).catch(err => {
+      this.snackBar.open("Da ist etwas schief gelaufen.", undefined, { duration: 5000 });
+    })
+  }
+
 }
+
 
 type DialogData = {
   title: string
