@@ -1,23 +1,22 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   LRLocation,
   Product,
   LocationDetail,
   ProductType,
   LocationType
-} from "../model/base";
-import { AngularFirestore } from "@angular/fire/firestore";
-import { Observable } from "rxjs";
-import { privateEncrypt } from "crypto";
+} from '../model/base';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class FirebaseService {
   constructor(public db: AngularFirestore) {}
 
   public getPlaces(): any {
-    return this.db.collection("locations").valueChanges({ idField: "id" });
+    return this.db.collection('locations').valueChanges({ idField: 'id' });
   }
 
   /**
@@ -29,18 +28,19 @@ export class FirebaseService {
 
   public getPlacesByCity(city: string): Observable<LRLocation[]> {
     return this.db
-      .collection<LRLocation>("locations", ref => ref.where("city", "==", city))
-      .valueChanges({ idField: "id" });
+      .collection<LRLocation>('locations', ref => ref.where('city', '==', city))
+      .valueChanges({ idField: 'id' });
   }
 
   public getPlaceByGooglePlaceId(
     googlePlaceId: string
   ): Observable<LRLocation[]> {
-    return this.db
-      .collection<LRLocation>("locations", ref =>
-        ref.where("googlePlaceId", "==", googlePlaceId)
+    const observable = this.db
+      .collection<LRLocation>('locations', ref =>
+        ref.where('googlePlaceId', '==', googlePlaceId)
       )
-      .valueChanges({ idField: "id" });
+      .valueChanges({ idField: 'id' });
+    return observable;
   }
 
   /**
@@ -49,7 +49,7 @@ export class FirebaseService {
   public getPlaceDetails(id: string): Observable<LocationDetail[]> {
     return this.db
       .doc<LRLocation>(`locations/${id}`)
-      .collection<LocationDetail>("details")
+      .collection<LocationDetail>('details')
       .valueChanges();
   }
 
@@ -59,8 +59,8 @@ export class FirebaseService {
   public getProductsForPlace(id: string): Observable<Product[]> {
     return this.db
       .doc(`locations/${id}`)
-      .collection<Product>("products")
-      .valueChanges({ idField: "id" });
+      .collection<Product>('products')
+      .valueChanges({ idField: 'id' });
   }
 
   /**
@@ -81,44 +81,44 @@ export class FirebaseService {
    */
   public addPlace(location: LRLocation, locationDetail: LocationDetail) {
     return this.db
-      .collection("locations")
+      .collection('locations')
       .add(location)
       .then(docRef => {
         docRef
-          .collection("details")
-          .doc("details")
+          .collection('details')
+          .doc('details')
           .set(locationDetail);
 
         const productsCafe: Product[] = [
           {
-            name: "Kaffee",
+            name: 'Kaffee',
             type: ProductType.COFFEE,
             price: 2.5
           },
           {
-            name: "Kuchen",
+            name: 'Kuchen',
             type: ProductType.CAKE,
             price: 5.0
           },
           {
-            name: "Lokalrunde",
+            name: 'Lokalrunde',
             type: ProductType.BUYAROUND,
             price: 20.0
           }
         ];
         const productsBar: Product[] = [
           {
-            name: "Kaffee",
+            name: 'Kaffee',
             type: ProductType.COFFEE,
             price: 2.5
           },
           {
-            name: "Kuchen",
+            name: 'Kuchen',
             type: ProductType.CAKE,
             price: 5.0
           },
           {
-            name: "Lokalrunde",
+            name: 'Lokalrunde',
             type: ProductType.BUYAROUND,
             price: 20.0
           }
@@ -126,11 +126,11 @@ export class FirebaseService {
 
         if (location.type === LocationType.BAR) {
           productsBar.forEach(async product => {
-            await docRef.collection("products").add(product);
+            await docRef.collection('products').add(product);
           });
         } else if (location.type === LocationType.CAFE) {
           productsCafe.forEach(async product => {
-            await docRef.collection("products").add(product);
+            await docRef.collection('products').add(product);
           });
         }
       });

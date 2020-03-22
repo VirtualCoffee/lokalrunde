@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LRLocation, Product, LocationDetail } from "../model/base"
-import { FirebaseService } from "../service/firebase.service"
+import { LocationDetail, LRLocation, Product } from '../model/base';
+import { FirebaseService } from '../service/firebase.service';
 
 @Component({
   selector: 'app-place-page',
@@ -11,12 +11,12 @@ import { FirebaseService } from "../service/firebase.service"
 export class PlacePageComponent {
 
   public placeId: string;
-  public place?: LRLocation
-  public placeDetails?: LocationDetail
-  public products?: Product[]
+  public place?: LRLocation;
+  public placeDetails?: LocationDetail;
+  public products?: Product[];
 
   constructor(route: ActivatedRoute, firebaseService: FirebaseService) {
-    this.placeId = route.snapshot.paramMap.get("id");
+    this.placeId = route.snapshot.paramMap.get('id');
     firebaseService.getPlace(this.placeId).subscribe(result => {
       this.place = result;
     });
@@ -34,16 +34,16 @@ export class PlacePageComponent {
 
   public getTypeIcon(type: string): string {
     return {
-      COFFEE: "../../assets/images/icon-coffee.svg",
-      BEER: "../../assets/images/icon-drink.svg",
-      CAKE: "../../assets/images/icon-food.svg",
-      BURGER: "../../assets/images/icon-food.svg",
+      COFFEE: '../../assets/images/icon-coffee.svg',
+      BEER: '../../assets/images/icon-drink.svg',
+      CAKE: '../../assets/images/icon-food.svg',
+      BURGER: '../../assets/images/icon-food.svg',
     }[type];
   }
 
   public visitPlace() {
     if (this.placeDetails) {
-      window.open(this.placeDetails.website, "_blank");
+      window.open(this.placeDetails.website, '_blank');
     }
   }
 
