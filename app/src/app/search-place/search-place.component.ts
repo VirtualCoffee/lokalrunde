@@ -4,27 +4,45 @@ import { FirebaseService } from '../service/firebase.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
-    selector: 'app-search-place',
-    templateUrl: './search-place.component.html',
-    styleUrls: ['./search-place.component.scss']
+  selector: 'app-search-place',
+  templateUrl: './search-place.component.html',
+  styleUrls: ['./search-place.component.scss']
 })
 export class SearchPlaceComponent implements OnInit {
 
-    @Input() places: LRLocation[];
+  @Input() places: LRLocation[];
+  address: Address;
+  lrlocation: LRLocation;
+  searchResultInvalidType: boolean;
 
-    constructor(private firebaseService: FirebaseService) {
+  public validTypes: string[] = ['bakery', 'bar', 'cafe', 'liquor_store', 'restaurant', 'night_club'];
+  public autocompleteOptions: any = {
+    types: ['establishment'],
+    componentRestrictions: { country: 'DE' }
+  };
 
+  constructor(private firebaseService: FirebaseService) {
+  }
+
+  ngOnInit() {
+    this.firebaseService.getPlaces().subscribe((result: LRLocation[]) => {
+      console.log(result);
+      this.places = result;
+    });
+  }
+
+  handleAddressChange(address: Address) {
+    console.log(address);
+
+    if (!address.types.some(value => this.validTypes.includes(value))) {
+      this.searchResultInvalidType = true;
+      return;
     }
+    this.searchResultInvalidType = false;
+    this.address = address;
+    this.firebaseService.getPlace(address.place_id).subscribe(result => this.lrlocation = result);
 
-    ngOnInit() {
-        this.firebaseService.getPlaces().subscribe((result: LRLocation[]) => {
-            console.log(result);
-            this.places = result;
-        });
-    }
-
-    public handleAddressChange(address: Address) {
-        console.log(address);
-    }
-
+    console.log(this.address);
+    console.log(this.lrlocation);
+  }
 }
