@@ -14,6 +14,7 @@ export class SearchPlaceComponent implements OnInit {
   address: Address;
   lrlocation: LRLocation;
   searchResultInvalidType: boolean;
+  nearLocations: LRLocation[];
 
   public validTypes: string[] = ['bakery', 'bar', 'cafe', 'liquor_store', 'restaurant', 'night_club'];
   public autocompleteOptions: any = {
@@ -33,13 +34,25 @@ export class SearchPlaceComponent implements OnInit {
   handleAddressChange(address: Address) {
     if (!address.types.some(value => this.validTypes.includes(value))) {
       this.searchResultInvalidType = true;
+      this.firebaseService.getPlacesByCity(address.place_id).subscribe(results => {
+        this.places = results;
+        console.log(results);
+      });
       return;
     }
     this.searchResultInvalidType = false;
     this.address = address;
+
     this.firebaseService.getPlaceByGooglePlaceId(address.place_id).subscribe(result => {
       this.lrlocation = result[0];
     });
 
+    if (this.lrlocation == null) {
+      this.firebaseService.getPlacesByCity(address.place_id).subscribe(results => {
+          this.places = results;
+          console.log(results);
+        }
+      );
+    }
   }
 }
