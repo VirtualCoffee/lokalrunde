@@ -26,23 +26,20 @@ export class SearchPlaceComponent implements OnInit {
 
   ngOnInit() {
     this.firebaseService.getPlaces().subscribe((result: LRLocation[]) => {
-      console.log(result);
       this.places = result;
     });
   }
 
   handleAddressChange(address: Address) {
-    console.log(address);
-
     if (!address.types.some(value => this.validTypes.includes(value))) {
       this.searchResultInvalidType = true;
       return;
     }
     this.searchResultInvalidType = false;
     this.address = address;
-    this.firebaseService.getPlace(address.place_id).subscribe(result => this.lrlocation = result);
+    this.firebaseService.getPlaceByGooglePlaceId(address.place_id).subscribe(result => {
+      this.lrlocation = result[0];
+    });
 
-    console.log(this.address);
-    console.log(this.lrlocation);
   }
 }

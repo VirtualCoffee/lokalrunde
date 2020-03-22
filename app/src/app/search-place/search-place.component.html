@@ -4,7 +4,7 @@
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Suche</mat-label>
     <input matInput ngx-google-places-autocomplete #placesRef="ngx-places" placeholder="Dein Lieblingsort"
-           (onAddressChange)="handleAddressChange($event)"/>
+           (onAddressChange)="handleAddressChange($event)" [options]="autocompleteOptions"/>
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
   <mat-divider></mat-divider>
