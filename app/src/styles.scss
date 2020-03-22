@@ -13,3 +13,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 $color-light: #fff;
 $landingpage-background: #F2E1D8;
 $primary: mat-color($app-primary);
+
+@import '~@ngx-share/button/themes/material/material-dark-theme';
