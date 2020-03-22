@@ -22,6 +22,7 @@ import { PlacePageComponent } from './place-page/place-page.component';
 import { CreatePlaceComponent } from './create-place/create-place.component';
 import { LoginComponent } from './login/login.component';
 import { DonateComponent } from './donate/donate.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     CreatePlaceComponent,
     LoginComponent,
     DonateComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,

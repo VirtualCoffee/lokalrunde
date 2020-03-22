@@ -10,16 +10,17 @@ import { FirebaseService } from "../service/firebase.service"
 })
 export class PlacePageComponent {
 
+  public placeId: string;
   public place?: LRLocation
   public products?: Product[]
 
   constructor(route: ActivatedRoute, firebaseService: FirebaseService) {
-    const placeID = route.snapshot.paramMap.get("id");
-    firebaseService.getPlace(placeID).subscribe(result => {
+    this.placeId = route.snapshot.paramMap.get("id");
+    firebaseService.getPlace(this.placeId).subscribe(result => {
       this.place = result;
     });
 
-    firebaseService.getProductsForPlace(placeID).subscribe(results => {
+    firebaseService.getProductsForPlace(this.placeId).subscribe(results => {
       console.log(results);
       this.products = results;
     });

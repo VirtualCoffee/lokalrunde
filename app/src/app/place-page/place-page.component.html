@@ -1,10 +1,4 @@
-<mat-toolbar color="primary">
-  <button mat-button routerLink="/search">
-      <mat-icon aria-hidden="false" aria-label="Zurück">keyboard_arrow_left</mat-icon>
-  </button>
-  <span class="flex-divider"></span>
-  <span class="app-title">Lokalrunde</span>
-</mat-toolbar>
+<app-toolbar backLink="/search"></app-toolbar>
 
 <div *ngIf="!place" class="place-page place-page--loading">
   <mat-spinner color="primary"></mat-spinner>
@@ -35,7 +29,7 @@
               <span class="product__price">{{ product.price.toFixed(2) }} €</span>
             </div>
             
-            <button mat-fab color="primary" class="mat-elevation-z0">
+            <button mat-fab color="primary" class="mat-elevation-z0" routerLink="/place/{{placeId}}/donate">
               <img
               class="product__type-icon"
               src="{{getTypeIcon(product.type)}}"
@@ -43,10 +37,9 @@
             </button>
 
             <img
-              height="41"
               width="93"
               class="product__paypal-button"
-              src="../../assets/images/logo-paypal-bigger.png"
+              src="../../assets/images/logo-paypal-medium.png"
             />
             <mat-divider
               *ngIf="idx !== products.length - 1" class="product__body__divider">
