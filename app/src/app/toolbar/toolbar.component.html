@@ -4,7 +4,11 @@
         <span>Zurück</span>
     </button>
     <span class="app-title">Lokalrunde</span>
-    <button mat-button routerLink="{{backLink}}">
-        <mat-icon aria-hidden="false" aria-label="Mehr">more_horiz</mat-icon>
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item routerLink="/imprint">Impressum</button>
+        <button mat-menu-item routerLink="/terms">AGBs</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>menu</mat-icon>
     </button>
 </mat-toolbar>

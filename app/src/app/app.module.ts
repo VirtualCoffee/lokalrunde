@@ -15,6 +15,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatStepperModule } from "@angular/material/stepper";
+import { MatMenuModule } from "@angular/material/menu";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { environment } from "../environments/environment";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
@@ -27,6 +28,8 @@ import { ToolbarComponent } from "./toolbar/toolbar.component";
 import { CompletedDonationPageComponent } from "./completed-donation-page/completed-donation-page.component";
 import { ShareButtonsModule } from "@ngx-share/buttons";
 import { HttpClientModule } from "@angular/common/http";
+import { ImprintComponent } from "./imprint/imprint.component";
+import { TermsComponent } from './terms/terms.component';
 
 import {
   FontAwesomeModule,
@@ -60,7 +63,9 @@ const appRoutes: Routes = [
   {
     path: "place/:id/completed-donation",
     component: CompletedDonationPageComponent
-  }
+  },
+  { path: "imprint", component: ImprintComponent },
+  { path: "terms", component: TermsComponent },
 ];
 
 @NgModule({
@@ -73,7 +78,9 @@ const appRoutes: Routes = [
     LoginComponent,
     DonateComponent,
     ToolbarComponent,
-    CompletedDonationPageComponent
+    CompletedDonationPageComponent,
+    ImprintComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +102,8 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatProgressSpinnerModule,
     MatStepperModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    MatMenuModule,
     // other imports here
   ],
   providers: [],
