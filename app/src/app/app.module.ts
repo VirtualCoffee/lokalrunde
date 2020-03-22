@@ -52,7 +52,8 @@ import {
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 import { RegisterPlaceComponent, EditDialog } from "./register-place/register-place.component";
-import { PrivacyComponent } from './privacy/privacy.component'
+import { PrivacyComponent } from './privacy/privacy.component';
+import { DemobannerComponent } from './demobanner/demobanner.component'
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -87,6 +88,7 @@ const appRoutes: Routes = [
     RegisterPlaceComponent,
     EditDialog,
     PrivacyComponent,
+    DemobannerComponent,
   ],
   imports: [
     BrowserModule,
