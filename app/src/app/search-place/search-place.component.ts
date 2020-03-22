@@ -3,6 +3,7 @@ import { LRLocation } from '../model/base';
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../service/firebase.service';
 import { resolve } from 'url';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'app-search-place',
@@ -22,6 +23,10 @@ export class SearchPlaceComponent implements OnInit {
       console.log(result);
       this.places = result;
     })
+  }
+  
+  public handleAddressChange(address: Address) {
+    console.log(address);
   }
 
 }

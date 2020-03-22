@@ -30,6 +30,7 @@ import { ShareButtonsModule } from "@ngx-share/buttons";
 import { HttpClientModule } from "@angular/common/http";
 import { ImprintComponent } from "./imprint/imprint.component";
 import { TermsComponent } from './terms/terms.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import {
   FontAwesomeModule,
@@ -104,6 +105,7 @@ const appRoutes: Routes = [
     MatStepperModule,
     ShareButtonsModule,
     MatMenuModule,
+    GooglePlaceModule
     // other imports here
   ],
   providers: [],

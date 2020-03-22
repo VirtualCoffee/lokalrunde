@@ -3,10 +3,13 @@
 <div class="search">
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Suche</mat-label>
-    <input matInput type="search" placeholder="Dein Lieblingsort" value="" />
+    <input matInput ngx-google-places-autocomplete #placesRef="ngx-places" placeholder="Dein Lieblingsort" (onAddressChange)="handleAddressChange($event)"/>
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
+
+  
   <mat-divider></mat-divider>
+  
   <mat-grid-list cols="1" rowHeight="200px">
     <mat-grid-tile *ngFor="let place of places" class="tile">
       <mat-card class="place mat-elevation-z4">
