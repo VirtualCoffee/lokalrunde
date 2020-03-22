@@ -29,7 +29,7 @@
     <mat-grid-tile *ngFor="let product of products; let idx = index" class="product">
       <mat-card class="mat-elevation-z0 product-card">
         <mat-card-content class="product-card-content">
-          <button mat-fab class="type-button mat-elevation-z0" routerLink="/place/{{placeId}}/donate">
+          <button mat-fab class="type-button mat-elevation-z0" routerLink="/place/{{placeId}}/donate/{{product.id}}">
             <img
             class="product__type-icon"
             src="{{getTypeIcon(product.type)}}"
