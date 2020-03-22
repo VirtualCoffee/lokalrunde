@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LRLocation, Product } from "../model/base"
+import { LRLocation, Product, LocationDetail } from "../model/base"
 import { FirebaseService } from "../service/firebase.service"
 
 @Component({
@@ -12,12 +12,17 @@ export class PlacePageComponent {
 
   public placeId: string;
   public place?: LRLocation
+  public placeDetails?: LocationDetail
   public products?: Product[]
 
   constructor(route: ActivatedRoute, firebaseService: FirebaseService) {
     this.placeId = route.snapshot.paramMap.get("id");
     firebaseService.getPlace(this.placeId).subscribe(result => {
       this.place = result;
+    });
+
+    firebaseService.getPlaceDetails(this.placeId).subscribe(results => {
+      this.placeDetails = results[0];
     });
 
     firebaseService.getProductsForPlace(this.placeId).subscribe(results => {
@@ -34,6 +39,12 @@ export class PlacePageComponent {
       CAKE: "../../assets/images/icon-food.svg",
       BURGER: "../../assets/images/icon-food.svg",
     }[type];
+  }
+
+  public visitPlace() {
+    if (this.placeDetails) {
+      window.open(this.placeDetails.website, "_blank");
+    }
   }
 
 }
