@@ -15,6 +15,7 @@ export class DonateComponent {
   public productId: string;
   public placeDetails: LocationDetail;
   public product: Product;
+  public termsAccepted = localStorage.acceptTerms === "true";
 
   constructor(route: ActivatedRoute, firebaseService: FirebaseService) {
     this.placeId = route.snapshot.paramMap.get("id");
@@ -25,6 +26,11 @@ export class DonateComponent {
     firebaseService.getProduct(this.placeId, this.productId).subscribe(result => {
       this.product = result;
     });
+  }
+
+  acceptTerms({checked}: any) {
+    localStorage.acceptTerms = String(checked);
+    this.termsAccepted = checked;
   }
 
   pay() {

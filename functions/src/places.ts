@@ -9,8 +9,6 @@ export const findPlaces = async (gmapsApiKey: string, searchText: string): Promi
     }
   })
 
-  console.log('response', searchResponse)
-
   const places = searchResponse.data.results.map(place => ({
     name: place.name,
     address: place.formatted_address,
@@ -24,12 +22,10 @@ export const getPlace = async (gmapsApiKey: string, googlePlaceId: string): Prom
   const searchResponse = await client.placeDetails({
     params: {
       place_id: googlePlaceId,
-      fields: ['name', 'geometry', 'formatted_address', 'photos', 'website'],
+      // fields: ['name', 'geometry', 'formatted_address', 'photos', 'website'],
       key: gmapsApiKey
     }
   })
-
-  console.log('response', searchResponse)
 
   const googlePlace = searchResponse.data.result
 

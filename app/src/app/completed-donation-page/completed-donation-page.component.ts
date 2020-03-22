@@ -10,7 +10,7 @@ export class CompletedDonationPageComponent implements OnInit {
   constructor() { }
 
   public shareText: string = "Ich habe gerade eine Lokalrunde gegeben.";
-  public shareLink: string = "https://www.lokalrunde.de";
+  public shareLink: string = "https://www.lokalrunde.eu";
   public hashtags: string = "lokalrunde,wirvsvirus";
 
   ngOnInit() {
