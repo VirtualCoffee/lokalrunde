@@ -19,33 +19,21 @@
     <mat-grid-tile *ngFor="let product of products; let idx = index" class="product">
       <mat-card class="mat-elevation-z0 product-card">
         <mat-card-content class="product-card-content">
-          <img
-            class="product__placeholder-image"
-            src="../../assets/images/product-placeholder.png"
-          />
+          <button mat-fab class="type-button mat-elevation-z0" routerLink="/place/{{placeId}}/donate">
+            <img
+            class="product__type-icon"
+            src="{{getTypeIcon(product.type)}}"
+            />
+          </button>
           <div class="product__body">
             <div class="product__info">
               <span class="product__name">{{ product.name }}</span>
               <span class="product__price">{{ product.price.toFixed(2) }} €</span>
             </div>
-            
-            <button mat-fab color="primary" class="mat-elevation-z0" routerLink="/place/{{placeId}}/donate">
-              <img
-              class="product__type-icon"
-              src="{{getTypeIcon(product.type)}}"
-              />
-            </button>
-
-            <img
-              width="93"
-              class="product__paypal-button"
-              src="../../assets/images/logo-paypal-medium.png"
-            />
-            <mat-divider
-              *ngIf="idx !== products.length - 1" class="product__body__divider">
-            </mat-divider>
           </div>
+          <button mat-raised-button color="primary" class="pay-button" routerLink="/place/{{placeId}}/donate">Bezahlen</button>
         </mat-card-content>
+        <mat-divider class="product__body__divider"></mat-divider>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

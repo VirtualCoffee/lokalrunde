@@ -29,10 +29,10 @@ export class PlacePageComponent {
 
   public getTypeIcon(type: string): string {
     return {
-      COFFEE: "../../assets/images/icon-coffee.png",
-      BEER: "../../assets/images/icon-drink.png",
-      CAKE: "../../assets/images/icon-food.png",
-      BURGER: "../../assets/images/icon-food.png",
+      COFFEE: "../../assets/images/icon-coffee.svg",
+      BEER: "../../assets/images/icon-drink.svg",
+      CAKE: "../../assets/images/icon-food.svg",
+      BURGER: "../../assets/images/icon-food.svg",
     }[type];
   }
 
