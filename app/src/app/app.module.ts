@@ -56,7 +56,7 @@ const appRoutes: Routes = [
   { path: "search", component: SearchPlaceComponent },
   { path: "place/create", component: CreatePlaceComponent },
   { path: "place/:id", component: PlacePageComponent },
-  { path: "place/:id/donate", component: DonateComponent },
+  { path: "place/:id/donate/:productId", component: DonateComponent },
   {
     path: "place/:id/completed-donation",
     component: CompletedDonationPageComponent

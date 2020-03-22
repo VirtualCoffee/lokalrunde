@@ -31,7 +31,7 @@
               <span class="product__price">{{ product.price.toFixed(2) }} €</span>
             </div>
           </div>
-          <button mat-raised-button color="primary" class="pay-button" routerLink="/place/{{placeId}}/donate">Bezahlen</button>
+          <button mat-raised-button color="primary" class="pay-button" routerLink="/place/{{placeId}}/donate/{{product.id}}">Bezahlen</button>
         </mat-card-content>
         <mat-divider class="product__body__divider"></mat-divider>
       </mat-card>
