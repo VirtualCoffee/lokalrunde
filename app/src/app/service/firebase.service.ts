@@ -27,22 +27,21 @@ export class FirebaseService {
     return this.db.doc<LRLocation>(`locations/${id}`).valueChanges();
   }
 
-  /**
-   * @param id - id of a location document inside firebase store
-   
-  public getPlaces(
-    googlePlaceId: string,
-    address: string
-  ): Observable<LRLocation> {
-    // Create a reference to the cities collection
-    var locationRef = this.db.collection("locations");
+  public getPlacesByCity(city: string): Observable<LRLocation[]> {
+    return this.db
+      .collection<LRLocation>("locations", ref => ref.where("city", "==", city))
+      .valueChanges({ idField: "id" });
+  }
 
-    var city = address.split(",")[1].split(" ")[1];
-    // Create a query against the collection.
-    var query = locationRef.where("city", "==", city);
-
-    return this.db.doc<LRLocation>(`locations/${id}`).valueChanges();
-  }*/
+  public getPlaceByGooglePlaceId(
+    googlePlaceId: string
+  ): Observable<LRLocation[]> {
+    return this.db
+      .collection<LRLocation>("locations", ref =>
+        ref.where("googlePlaceId", "==", googlePlaceId)
+      )
+      .valueChanges({ idField: "id" });
+  }
 
   /**
    * @param id - id of a location document inside firebase store
