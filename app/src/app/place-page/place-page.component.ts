@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LocationDetail, LRLocation, Product } from '../model/base';
+import { LocationDetail, LRLocation, Product, ProductType } from '../model/base';
 import { FirebaseService } from '../service/firebase.service';
 
 @Component({
@@ -14,6 +14,14 @@ export class PlacePageComponent {
   public place?: LRLocation;
   public placeDetails?: LocationDetail;
   public products?: Product[];
+
+  get normalProducts(): Product[] {
+    return this.products.filter(p => p.type !== ProductType.BUYAROUND)
+  }
+
+  get buyaroundProduct(): Product {
+    return this.products.filter(p => p.type === ProductType.BUYAROUND)[0] || null;
+  }
 
   constructor(route: ActivatedRoute, firebaseService: FirebaseService) {
     this.placeId = route.snapshot.paramMap.get('id');
