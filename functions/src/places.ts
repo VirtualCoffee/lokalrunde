@@ -1,4 +1,5 @@
 import { Client } from '@googlemaps/google-maps-services-js'
+import { AddressType } from '@googlemaps/google-maps-services-js/dist/common'
 const client = new Client({})
 
 export const findPlaces = async (gmapsApiKey: string, searchText: string): Promise<object[]> => {
@@ -22,7 +23,6 @@ export const getPlace = async (gmapsApiKey: string, googlePlaceId: string): Prom
   const searchResponse = await client.placeDetails({
     params: {
       place_id: googlePlaceId,
-      // fields: ['name', 'geometry', 'formatted_address', 'photos', 'website'],
       key: gmapsApiKey
     }
   })
@@ -34,7 +34,8 @@ export const getPlace = async (gmapsApiKey: string, googlePlaceId: string): Prom
     const photoResponse = await client.placePhoto({
       params: {
         photoreference: googlePlace.photos[0].photo_reference,
-        maxwidth: 300,
+        maxwidth: 600,
+        maxheight: 600,
         key: gmapsApiKey
       }
     })
@@ -42,11 +43,26 @@ export const getPlace = async (gmapsApiKey: string, googlePlaceId: string): Prom
     imageUrl = 'https://lh3.googleusercontent.com' + photoResponse.request.path
   }
 
+  let type: string | null = null
+  if (googlePlace.types && googlePlace.types.includes('bar' as AddressType)) type = 'BAR'
+  else if (googlePlace.types && googlePlace.types.includes('cafe' as AddressType)) type = 'CAFE'
+
+  const street = googlePlace.formatted_address?.split(', ')[0]
+  const zipCode = googlePlace.formatted_address?.split(', ')[1].split(' ')[0]
+  const city = googlePlace.formatted_address?.split(', ')[1].split(' ')[1]
+
   const place = {
     name: googlePlace.name,
     address: googlePlace.formatted_address,
     website: googlePlace.website,
-    imageUrl
+    imageUrl,
+    googlePlaceId,
+    type,
+    street,
+    city,
+    zipCode,
+    latitude: googlePlace.geometry?.location.lat,
+    longitude: googlePlace.geometry?.location.lng
   }
 
   return place
