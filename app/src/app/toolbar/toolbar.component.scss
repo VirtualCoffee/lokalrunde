@@ -1,8 +1,32 @@
 @import '../../styles.scss';
 
+.toolbar {
+    display: grid;
+    grid-template-columns: [left] 40px [center] auto [right] 40px;
+}
+
 .app-title {
+    grid-area: center;
     text-transform: uppercase;
     color: $color-light;
+}
+
+.left {
+    grid-area: left;
+    display: flex;
+    justify-content: center;
+}
+
+.right {
+    grid-area: right;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 400px) {
+    .back-title {
+        display: none;
+    }
 }
 
 .mat-toolbar {

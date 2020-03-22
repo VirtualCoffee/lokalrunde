@@ -25,23 +25,23 @@
   </span>
   <mat-divider></mat-divider>
 
-  <mat-grid-list cols="1" rowHeight="3:1" class="products">
-    <mat-grid-tile *ngFor="let product of products; let idx = index" class="product">
+  <mat-grid-list cols="1" rowHeight="100px" class="products">
+    <mat-grid-tile *ngFor="let product of normalProducts; let idx = index" class="product">
       <mat-card class="mat-elevation-z0 product-card">
         <mat-card-content class="product-card-content">
-          <button mat-fab class="type-button mat-elevation-z0" routerLink="/place/{{placeId}}/donate/{{product.id}}">
+          <a mat-fab class="type-button mat-elevation-z0" routerLink="/place/{{placeId}}/donate/{{product.id}}">
             <img
             class="product__type-icon"
             src="{{getTypeIcon(product.type)}}"
             />
-          </button>
+          </a>
           <div class="product__body">
             <div class="product__info">
               <span class="product__name">{{ product.name }}</span>
               <span class="product__price">{{ product.price.toFixed(2) }} €</span>
             </div>
           </div>
-          <button mat-raised-button color="primary" class="pay-button" routerLink="/place/{{placeId}}/donate/{{product.id}}">Bezahlen</button>
+          <a mat-raised-button color="primary" class="pay-button" routerLink="/place/{{placeId}}/donate/{{product.id}}">Bezahlen</a>
         </mat-card-content>
         <mat-divider class="product__body__divider"></mat-divider>
       </mat-card>
@@ -50,5 +50,6 @@
 </div>
 
 <div class="buyaround-section">
-  <a mat-raised-button color="primary" class="buyaround-button" >Lokalrunde 20,00€</a>
+
+  <a mat-raised-button color="primary" class="buyaround-button" *ngIf="buyaroundProduct" routerLink="/place/{{placeId}}/donate/{{buyaroundProduct.id}}">{{buyaroundProduct.name}} {{ buyaroundProduct.price.toFixed(2) }} €</a>
 </div>

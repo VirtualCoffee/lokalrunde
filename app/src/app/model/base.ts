@@ -32,9 +32,9 @@ export interface Product {
 }
 
 export enum ProductType {
-  COFFEE,
-  CAKE,
-  BEER,
-  BURGER,
-  BUYAROUND
+  COFFEE = "COFFEE",
+  CAKE = "CAKE",
+  BEER = "BEER",
+  BURGER = "BURGER",
+  BUYAROUND = "BUYAROUND"
 }
