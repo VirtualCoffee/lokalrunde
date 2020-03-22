@@ -32,26 +32,18 @@ import { ImprintComponent } from "./imprint/imprint.component";
 import { TermsComponent } from './terms/terms.component';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
+import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
+import { fab, faFacebookF, faTwitter, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import {
-  FontAwesomeModule,
-  FaIconLibrary
-} from "@fortawesome/angular-fontawesome";
-import {
-  fab,
-  faTwitter,
-  faFacebookF,
-  faWhatsapp
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  fas,
+  faCheck,
   faCoffee,
   faCommentAlt,
-  faMinus,
-  faLink,
+  faEnvelope,
   faExclamation,
+  faLink,
+  faMinus,
   faPrint,
-  faCheck,
-  faEnvelope
+  fas
 } from "@fortawesome/free-solid-svg-icons";
 
 const appRoutes: Routes = [
@@ -92,7 +84,6 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
     ),
     MatButtonModule,
     MatToolbarModule,
