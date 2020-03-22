@@ -1,23 +1,55 @@
+@import "../../styles.scss";
+
 .completed-donation {
-  padding: 10vw;
   height: 100vh;
-  background-image: url("../../assets/images/image-completed-coffee.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  color: white;
+  color: $primary;
+  background: $landingpage-background;
 }
 
-share-buttons{
-  margin-top: 5vh;
+.content {
+  padding: 40px;
 }
 
-::ng-deep .sb-button {
-    width: 100%;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    opacity: 0.9;
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 50px auto;
+  background: white;
+  border-radius: 100%;
+  width: 200px;
+
+  &:after {
+    content: "";
+    padding-top: 100%;
+    width: 1px;
+    display: block;
+  }
+
+  & > img {
+    width: 60px;
+  }
 }
-::ng-deep .sb-wrapper {
-  width: 100%;
+
+.share-buttons {
+  flex-direction: row;
+  flex-wrap: initial;
+}
+
+.explanation-text {
+  margin-top: 24px;
+  color: black;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+}
+
+.share-now-text {
+  margin-top: 24px;
+  color: black;
+  opacity: .6;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2
 }
