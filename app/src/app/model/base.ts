@@ -4,7 +4,7 @@ export interface LRLocation {
     imageUrl: string;
     city: string;
     street: string;
-    postcode: string;
+    zipCode: string;
     type: LocationType;
 }
 
@@ -25,6 +25,7 @@ export interface LocationDetail {
 }
 
 export interface Product {
+    id?: string
     name: string;
     price: number;
     type: ProductType;

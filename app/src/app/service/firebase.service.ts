@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LRLocation, Product } from '../model/base';
+import { LRLocation, Product, LocationDetail } from "../model/base"
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from "rxjs"
 
@@ -22,9 +22,18 @@ export class FirebaseService {
   }
 
   /**
+   * @param id - id of a location document inside firebase store
+   */
+  public getPlaceDetails(id: string): Observable<LocationDetail[]> {
+    return this.db.doc<LRLocation>(`locations/${id}`)
+      .collection<LocationDetail>('details').valueChanges();
+  }
+
+  /**
    @param id - id of a location document inside firebase store
    */
   public getProductsForPlace(id: string): Observable<Product[]> {
-    return this.db.doc(`locations/${id}`).collection<Product>('products').valueChanges();
+    return this.db.doc(`locations/${id}`)
+      .collection<Product>('products').valueChanges({idField: 'id'});
   }
 }
