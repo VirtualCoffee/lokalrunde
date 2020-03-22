@@ -1,20 +1,28 @@
-<app-toolbar backLink="/search"></app-toolbar>
-
 <div class="completed-donation">
+    <app-toolbar backLink="/search"></app-toolbar>
     
-    <h1>Vielen Dank für deine Lokalrunde!</h1>
+    <div class="content">
+        <div class="icon">
+            <img src="../../assets/images/icon-coffee-primary.svg">
+        </div>
+        
+        <h1>Vielen Dank für deinen Besuch!</h1>
+        
+        <p class="explanation-text">Teile deinen Besuch jetzt mit deinen Freunden oder lade Sie auf eine Lokalrunde ein.</p>
 
-    <p>Teile deinen Besuch jetzt mit deinen Freunden oder lade Sie auf eine Lokalrunde ein.</p>
-
-    <share-buttons [theme]="'material-dark'"
-    [include]="['facebook','twitter','whatsapp', 'email']"
-    [show]="5"
-    [showText]="true"
-    [url]="shareLink"
-    [title]="shareText"
-    [description]="shareText"
-    [tags]="hashtags"
-    [autoSetMeta]="false"
-    ></share-buttons>
-
+        <p class="share-now-text">Jetzt teilen</p>
+        
+        <share-buttons class="share-buttons"
+        [theme]="'circles-dark'"
+        [include]="['facebook','twitter','whatsapp', 'email']"
+        [show]="5"
+        [showText]="false"
+        [url]="shareLink"
+        [title]="shareText"
+        [description]="shareText"
+        [tags]="hashtags"
+        [autoSetMeta]="false"
+        ></share-buttons>
+        
+    </div>
 </div>
