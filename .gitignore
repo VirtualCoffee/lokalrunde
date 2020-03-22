@@ -9,6 +9,9 @@ serviceAccountKey.json
 # Firebase - local
 .firebase/
 
+# VSCode
+.vscode/
+
 # Log file
 *.log
 
