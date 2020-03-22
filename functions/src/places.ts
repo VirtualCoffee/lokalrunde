@@ -1,5 +1,6 @@
 import { Client } from '@googlemaps/google-maps-services-js'
 import { AddressType } from '@googlemaps/google-maps-services-js/dist/common'
+import { LocationType } from './model/base'
 const client = new Client({})
 
 export const findPlaces = async (gmapsApiKey: string, searchText: string): Promise<object[]> => {
@@ -44,8 +45,9 @@ export const getPlace = async (gmapsApiKey: string, googlePlaceId: string): Prom
   }
 
   let type: string | null = null
-  if (googlePlace.types && googlePlace.types.includes('bar' as AddressType)) type = 'BAR'
-  else if (googlePlace.types && googlePlace.types.includes('cafe' as AddressType)) type = 'CAFE'
+  if (googlePlace.types && googlePlace.types.includes('bar' as AddressType)) type = LocationType.BAR
+  else if (googlePlace.types && googlePlace.types.includes('cafe' as AddressType))
+    type = LocationType.CAFE
 
   const street = googlePlace.formatted_address?.split(', ')[0]
   const zipCode = googlePlace.formatted_address?.split(', ')[1].split(' ')[0]

@@ -10,8 +10,8 @@ export interface LRLocation {
 }
 
 export enum LocationType {
-  BAR,
-  CAFE
+  BAR = "BAR",
+  CAFE = "CAFE"
 }
 
 export interface LocationDetail {
