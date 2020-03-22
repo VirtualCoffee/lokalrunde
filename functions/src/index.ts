@@ -25,9 +25,6 @@ export const place = functions
         'You have to provide a google place id (googlePlaceId).'
       )
 
-    console.log('data', data)
-    console.log('place id', data.googlePlaceId)
-
     const place = await getPlace(gmapsApiKey, data.googlePlaceId)
 
     return place
