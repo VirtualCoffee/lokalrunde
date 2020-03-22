@@ -36,4 +36,12 @@ export class FirebaseService {
     return this.db.doc(`locations/${id}`)
       .collection<Product>('products').valueChanges({idField: 'id'});
   }
+
+  /**
+   * @param locationId - id of the owning location document inside firebase store
+   * @param productId - id of a product document inside firebase store
+   */
+  public getProduct(locationId: string, productId: string): Observable<Product> {
+    return this.db.doc<Product>(`locations/${locationId}/products/${productId}`).valueChanges();
+  }
 }

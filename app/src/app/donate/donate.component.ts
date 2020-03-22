@@ -22,15 +22,24 @@ export class DonateComponent {
     firebaseService.getPlaceDetails(this.placeId).subscribe(results => {
       this.placeDetails = results[0];
     });
-    firebaseService.getProductsForPlace(this.placeId).subscribe(results => {
-      this.product = results.find(p => p.id === this.productId);
+    firebaseService.getProduct(this.placeId, this.productId).subscribe(result => {
+      this.product = result;
     });
   }
 
   pay() {
+    // TODO: distinguish between paypal.me link and paypal account. Will be readable from different data field in the future
     const { donationLink } = this.placeDetails;
     const trimmedDonationLink = donationLink.slice(0, donationLink.endsWith("/") ? -1 : donationLink.length);
-    window.open(`${trimmedDonationLink}/${this.product.price.toFixed(2)}EUR`, "_blank");
-    this.stepper.next();
+    const price = this.product.price.toFixed(2)
+
+    if (trimmedDonationLink.includes("paypal.me")) {
+      window.open(`${trimmedDonationLink}/${price}EUR`, "_blank");
+      this.stepper.next();
+    } else {
+      const paypalAccount = trimmedDonationLink
+      const returnURL = location.href.replace(/donate.*$/, "completed-donation");
+      window.open(`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalAccount}&currency_code=EUR&amount=${price}&return=${returnURL}&item_name=${this.product.name}`, "_self");
+    }
   }
 }
