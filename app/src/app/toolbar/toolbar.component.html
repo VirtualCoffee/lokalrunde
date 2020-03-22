@@ -1,15 +1,19 @@
-<mat-toolbar color="primary">
-    <button mat-button routerLink="{{backLink}}">
-        <mat-icon aria-hidden="false" aria-label="Zurück" >keyboard_arrow_left</mat-icon>
-        <span>Zurück</span>
-    </button>
+<mat-toolbar color="primary" class="toolbar">
+    <div class="left">
+        <button mat-button routerLink="{{backLink}}">
+            <mat-icon aria-hidden="false" aria-label="Zurück" >keyboard_arrow_left</mat-icon>
+            <span class="back-title">Zurück</span>
+        </button>
+    </div>
     <span class="app-title">Lokalrunde</span>
-    <mat-menu #appMenu="matMenu" xPosition="before">
-        <button mat-menu-item routerLink="/imprint">Impressum</button>
-        <button mat-menu-item routerLink="/privacy">Datenschutz</button>
-        <button mat-menu-item routerLink="/terms">AGBs</button>
-    </mat-menu>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
-    <mat-icon>menu</mat-icon>
-    </button>
+    <div class="right">
+        <mat-menu class="menu" #appMenu="matMenu" xPosition="before">
+            <button mat-menu-item routerLink="/imprint">Impressum</button>
+            <button mat-menu-item routerLink="/privacy">Datenschutz</button>
+            <button mat-menu-item routerLink="/terms">AGBs</button>
+        </mat-menu>
+        <button class="menu" mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
 </mat-toolbar>
