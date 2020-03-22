@@ -1,6 +1,10 @@
+## (⚠ DEMO-System only, please do not donate! ⚠)
+
 This repository contains the source code of the prototype app "lokalrunde" for Hackathon #WirVsVirus 🏁.
 
-### https://lokalrunde.eu (⚠ DEMO-System only, please do not donate! ⚠)
+### --> https://lokalrunde.eu 
+
+<br />
 
 ![image](app/src/assets/images/logo-splashscreen.png) 
 
