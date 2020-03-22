@@ -9,6 +9,16 @@
     [ngStyle]="{ 'background-image': 'url(' + place.imageUrl + ')' }"
   >
     <span class="name">{{ place.name }}</span>
+    <mat-icon
+      *ngIf="placeDetails && placeDetails.website"
+      class="share-icon"
+      color="primary"
+      aria-hidden="false"
+      aria-label="Lokal besuchen"
+      (click)="visitPlace()"
+    >
+      share
+  </mat-icon>
   </div>
   <span class="info">
     {{ place.type }} - {{ place.city }} - {{ place.street }}

@@ -45,6 +45,13 @@
   background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.1));
 }
 
+.share-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 12px;
+}
+
 .info {
   display: block;
   margin-bottom: 24px;
