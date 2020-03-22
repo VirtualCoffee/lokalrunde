@@ -12,9 +12,9 @@ echo  '               /|___
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
 echo '### build npm ###'
-( cd app ; npm run build --prod )
+( cd app ; npm run build -- --prod )
 
 echo '### firebase deploy ###'
 firebase deploy --only hosting
 
-say 'successfully shipped'
+echo 'successfully shipped'
