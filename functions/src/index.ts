@@ -1,28 +1,22 @@
-import * as functions from "firebase-functions";
+import * as functions from 'firebase-functions'
+import { findPlaces, getPlace } from './places'
 
-export const findPlace = functions.https.onRequest(
-  async (request, response) => {
-    const key = functions.config().gmaps.key;
-    const place = request.query.search || "Bierbrunnen";
-    const path = `/maps/api/place/findplacefromtext/json?input=${place}&key=${key}&inputtype=textquery&fields=name,geometry,formatted_address,icon,photos`;
+const gmapsApiKey: string = functions.config().gmaps.key
 
-    const axios = require("axios");
+export const places = functions
+  .region('europe-west1')
+  .https.onRequest(async (request, response) => {
+    const searchText: string = request.query.searchText
 
-    const instance = axios.create({
-      baseURL: "https://maps.googleapis.com"
-    });
+    const places = await findPlaces(gmapsApiKey, searchText)
 
-    instance
-      .get(path)
-      .then(function(res: any) {
-        response.send(res);
-        Promise.resolve(res);
-      })
-      .catch(function(error: any) {
-        Promise.reject(error);
-      })
-      .then(function() {
-        // always executed
-      });
-  }
-);
+    response.send(places)
+  })
+
+export const place = functions.region('europe-west1').https.onRequest(async (request, response) => {
+  const googlePlaceId: string = request.query.googlePlaceId
+
+  const place = await getPlace(gmapsApiKey, googlePlaceId)
+
+  response.send(place)
+})
