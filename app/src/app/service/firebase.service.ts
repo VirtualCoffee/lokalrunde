@@ -80,8 +80,8 @@ export class FirebaseService {
   /**
    * @param location - LRLocation
    */
-  public AddPlace(location: LRLocation, locationDetail: LocationDetail) {
-    const docRef = this.db
+  public addPlace(location: LRLocation, locationDetail: LocationDetail) {
+    return this.db
       .collection("locations")
       .add(location)
       .then(docRef => {
