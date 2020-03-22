@@ -9,6 +9,8 @@ export const findPlaces = async (gmapsApiKey: string, searchText: string): Promi
     }
   })
 
+  console.log('response', searchResponse)
+
   const places = searchResponse.data.results.map(place => ({
     name: place.name,
     address: place.formatted_address,
@@ -26,6 +28,8 @@ export const getPlace = async (gmapsApiKey: string, googlePlaceId: string): Prom
       key: gmapsApiKey
     }
   })
+
+  console.log('response', searchResponse)
 
   const googlePlace = searchResponse.data.result
 

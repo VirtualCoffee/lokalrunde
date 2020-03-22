@@ -1,12 +1,15 @@
 import * as functions from 'firebase-functions'
-import { findPlaces, getPlace } from './places'
+import * as admin from 'firebase-admin'
+import 'firebase-functions'
+admin.initializeApp()
 
-const gmapsApiKey: string = functions.config().gmaps.key
+import { getPlace, findPlaces } from './places'
 
 export const places = functions
   .region('europe-west1')
   .https.onRequest(async (request, response) => {
     const searchText: string = request.query.searchText
+    const gmapsApiKey: string = functions.config().gmaps.key
 
     const places = await findPlaces(gmapsApiKey, searchText)
 
@@ -15,6 +18,7 @@ export const places = functions
 
 export const place = functions.region('europe-west1').https.onRequest(async (request, response) => {
   const googlePlaceId: string = request.query.googlePlaceId
+  const gmapsApiKey: string = functions.config().gmaps.key
 
   const place = await getPlace(gmapsApiKey, googlePlaceId)
 
