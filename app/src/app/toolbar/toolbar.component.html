@@ -4,8 +4,9 @@
         <span>Zurück</span>
     </button>
     <span class="app-title">Lokalrunde</span>
-    <mat-menu #appMenu="matMenu">
+    <mat-menu #appMenu="matMenu" xPosition="before">
         <button mat-menu-item routerLink="/imprint">Impressum</button>
+        <button mat-menu-item routerLink="/privacy">Datenschutz</button>
         <button mat-menu-item routerLink="/terms">AGBs</button>
     </mat-menu>
     <button mat-icon-button [matMenuTriggerFor]="appMenu">

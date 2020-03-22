@@ -11,6 +11,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSelectModule } from "@angular/material/select";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDividerModule } from "@angular/material/divider";
@@ -48,7 +49,8 @@ import {
   faCheck,
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
-import { RegisterPlaceComponent, EditDialog } from "./register-place/register-place.component"
+import { RegisterPlaceComponent, EditDialog } from "./register-place/register-place.component";
+import { PrivacyComponent } from './privacy/privacy.component'
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -63,6 +65,7 @@ const appRoutes: Routes = [
   },
   { path: "imprint", component: ImprintComponent },
   { path: "terms", component: TermsComponent },
+  { path: "privacy", component: PrivacyComponent },
   { path: "register/:googlePlaceID", component: RegisterPlaceComponent },
 ];
 
@@ -81,6 +84,7 @@ const appRoutes: Routes = [
     TermsComponent,
     RegisterPlaceComponent,
     EditDialog,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +101,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
+    MatCheckboxModule,
     MatSelectModule,
     MatCardModule,
     MatGridListModule,
