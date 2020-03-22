@@ -1,11 +1,22 @@
 .completed-donation {
-  padding: 27px;
+  padding: 10vw;
+  height: 100vh;
+  background-image: url("../../assets/images/image-completed-coffee.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+
+share-buttons{
+  margin-top: 5vh;
 }
 
 ::ng-deep .sb-button {
     width: 100%;
     margin-left: 0 !important;
     margin-right: 0 !important;
+    opacity: 0.9;
 }
 ::ng-deep .sb-wrapper {
   width: 100%;
