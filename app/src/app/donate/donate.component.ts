@@ -28,18 +28,18 @@ export class DonateComponent {
   }
 
   pay() {
-    // TODO: distinguish between paypal.me link and paypal account. Will be readable from different data field in the future
-    const { donationLink } = this.placeDetails;
-    const trimmedDonationLink = donationLink.slice(0, donationLink.endsWith("/") ? -1 : donationLink.length);
+    const { donationLink, paypalAccountReceiver } = this.placeDetails;
     const price = this.product.price.toFixed(2)
+    const trimmedDonationLink = donationLink.slice(0, donationLink.endsWith("/") ? -1 : donationLink.length);
 
-    if (trimmedDonationLink.includes("paypal.me")) {
+    if (paypalAccountReceiver) {
+      const returnURL = location.href.replace(/donate.*$/, "completed-donation");
+      window.open(`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalAccountReceiver}&currency_code=EUR&amount=${price}&return=${returnURL}&item_name=${this.product.name}`, "_self");
+    } else if (trimmedDonationLink.includes("paypal.me")) {
       window.open(`${trimmedDonationLink}/${price}EUR`, "_blank");
       this.stepper.next();
-    } else {
-      const paypalAccount = trimmedDonationLink
-      const returnURL = location.href.replace(/donate.*$/, "completed-donation");
-      window.open(`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalAccount}&currency_code=EUR&amount=${price}&return=${returnURL}&item_name=${this.product.name}`, "_self");
+    } else  {
+      console.error("Can not make donation. Missing paypal address / account")
     }
   }
 }
