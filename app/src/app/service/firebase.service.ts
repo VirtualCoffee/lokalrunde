@@ -59,7 +59,7 @@ export class FirebaseService {
   public getProductsForPlace(id: string): Observable<Product[]> {
     return this.db
       .doc(`locations/${id}`)
-      .collection<Product>("products")
+      .collection<Product>("products", ref => ref.orderBy("price", "asc"))
       .valueChanges({ idField: "id" });
   }
 
