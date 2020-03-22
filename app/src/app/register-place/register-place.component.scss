@@ -1,0 +1,96 @@
+@import '../../styles.scss';
+
+.place-page {
+  height: 100%;
+  padding: 20px;
+}
+
+.place-page--loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/***********************
+    Place properties
+***********************/
+
+
+.image {
+  width: 100%;
+  margin-bottom: 24px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+
+  &:after {
+    content: "";
+    padding-top: 75%;
+    width: 1px;
+    display: block;
+  }
+}
+
+.name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: white;
+  background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.1));
+}
+
+.edit-name-icon {
+  vertical-align: bottom;
+}
+
+.edit-image-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px;
+}
+
+.info {
+  display: block;
+  margin-bottom: 24px;
+  opacity: .6;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+} 
+
+
+
+
+.pay-button {
+  align-self: center;
+  border-radius: 20px;
+  padding: 0 32px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.text {
+  opacity: .6;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+
+.register-button {
+  text-transform: uppercase;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.type-container, .paypal-container {
+  margin-top: 24px;
+}

@@ -1,15 +1,15 @@
 @startuml
 
-Location "1" --> "1" Address
+Location "1" --> "1" LocationDetail
 Location "1" --> "*" Product
 
 class Location {
-   name : String
-   ownerName: String
-   imageurl : String
-   address: Address
-   type: LocationType
-   donationLink: String
+    name : String
+    imageUrl : String
+    city: String
+    street: String
+    zipCode: String
+    type: LocationType
 }
 
 enum LocationType
@@ -18,10 +18,14 @@ enum LocationType
     CAFE
 }
 
-class Address {
-    city: String
-    street: String
-    postcode: String
+class LocationDetail {
+    ownerName: String
+    donationLink: String
+    description: String
+    latitude: number
+    longitude: number
+    googlePlaceId: String
+    website: String
 }
 
 class Product {

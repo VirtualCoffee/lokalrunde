@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchRestaurantComponent } from './search-restaurant.component';
+import { ImprintComponent } from './imprint.component';
 
-describe('SearchRestaurantComponent', () => {
-  let component: SearchRestaurantComponent;
-  let fixture: ComponentFixture<SearchRestaurantComponent>;
+describe('ImprintComponent', () => {
+  let component: ImprintComponent;
+  let fixture: ComponentFixture<ImprintComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchRestaurantComponent ]
+      declarations: [ ImprintComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchRestaurantComponent);
+    fixture = TestBed.createComponent(ImprintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

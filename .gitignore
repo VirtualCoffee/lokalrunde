@@ -1,5 +1,16 @@
+node_modules
+
 # Compiled class file
 *.class
+
+# Firebase Admin Service Account
+serviceAccountKey.json
+
+# Firebase - local
+.firebase/
+
+# VSCode
+.vscode/
 
 # Log file
 *.log
@@ -26,3 +37,5 @@ hs_err_pid*
 
 .gradletasknamecache
 .DS_Store
+
+/app/src/environments/environment.ts

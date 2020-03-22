@@ -1,1 +1,55 @@
-<p>place-page works!</p>
+<app-toolbar backLink="/search"></app-toolbar>
+
+<div *ngIf="!place" class="place-page place-page--loading">
+  <mat-spinner color="primary"></mat-spinner>
+</div>
+<div *ngIf="place" class="place-page">
+ 
+  <div
+    class="image"
+    [ngStyle]="{ 'background-image': 'url(' + place.imageUrl + ')' }"
+  >
+    <span class="name">{{ place.name }}</span>
+    <mat-icon
+      *ngIf="placeDetails && placeDetails.website"
+      class="share-icon"
+      color="primary"
+      aria-hidden="false"
+      aria-label="Lokal besuchen"
+      (click)="visitPlace()"
+    >
+      share
+  </mat-icon>
+  </div>
+  <span class="info">
+    {{ place.type }} - {{ place.city }} - {{ place.street }}
+  </span>
+  <mat-divider></mat-divider>
+
+  <mat-grid-list cols="1" rowHeight="100px" class="products">
+    <mat-grid-tile *ngFor="let product of normalProducts; let idx = index" class="product">
+      <mat-card class="mat-elevation-z0 product-card">
+        <mat-card-content class="product-card-content">
+          <a mat-fab class="type-button mat-elevation-z0" routerLink="/place/{{placeId}}/donate/{{product.id}}">
+            <img
+            class="product__type-icon"
+            src="{{getTypeIcon(product.type)}}"
+            />
+          </a>
+          <div class="product__body">
+            <div class="product__info">
+              <span class="product__name">{{ product.name }}</span>
+              <span class="product__price">{{ product.price.toFixed(2) }} €</span>
+            </div>
+          </div>
+          <a mat-raised-button color="primary" class="pay-button" routerLink="/place/{{placeId}}/donate/{{product.id}}">Bezahlen</a>
+        </mat-card-content>
+        <mat-divider class="product__body__divider"></mat-divider>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div class="buyaround-section">
+  <a mat-raised-button color="primary" class="buyaround-button" *ngIf="buyaroundProduct" routerLink="/place/{{placeId}}/donate/{{buyaroundProduct.id}}">{{buyaroundProduct.name}} {{ buyaroundProduct.price.toFixed(2) }} €</a>
+</div>

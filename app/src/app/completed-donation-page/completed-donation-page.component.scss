@@ -1,0 +1,55 @@
+@import "../../styles.scss";
+
+.completed-donation {
+  height: 100vh;
+  color: $primary;
+  background: $landingpage-background;
+}
+
+.content {
+  padding: 40px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 50px auto;
+  background: white;
+  border-radius: 100%;
+  width: 200px;
+
+  &:after {
+    content: "";
+    padding-top: 100%;
+    width: 1px;
+    display: block;
+  }
+
+  & > img {
+    width: 60px;
+  }
+}
+
+.share-buttons {
+  flex-direction: row;
+  flex-wrap: initial;
+}
+
+.explanation-text {
+  margin-top: 24px;
+  color: black;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+}
+
+.share-now-text {
+  margin-top: 24px;
+  color: black;
+  opacity: .6;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2
+}

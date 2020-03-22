@@ -1,1 +1,24 @@
-<p>donate works!</p>
+<app-toolbar backLink="/search"></app-toolbar>
+
+<mat-vertical-stepper #stepper>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>BEGLEICH DEINE RECHNUNG</ng-template>
+      <p>Bezahle Deine Rechnung. Nachdem Du Deine Rechnung bezahlt hast, kehre bitte zu dieser App zurück.</p>
+      <mat-checkbox color="primary" [checked]="termsAccepted" (change)="acceptTerms($event)">
+        <a href="/terms" target="_blank">AGBs gelesen und akzeptiert</a>
+      </mat-checkbox>
+      <button mat-raised-button color="primary" class="pay-button next" [disabled]="!termsAccepted" (click)="pay()" type="button">JETZT BEZAHLEN</button>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form>
+      <p>Wenn alles geklappt hat, bestätige bitte Deine Zahlung!</p>
+      <ng-template matStepLabel>BEZAHLUNG BESTÄTIGEN</ng-template>
+      <a mat-raised-button color="primary" class="paid-button next" routerLink="/place/{{placeId}}/completed-donation">ICH HABE BEZAHLT</a>
+      <div class="next">
+        <button mat-button matStepperPrevious>ZURÜCK?</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-vertical-stepper>

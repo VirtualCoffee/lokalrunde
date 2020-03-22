@@ -1,6 +1,81 @@
-.background {
-  background-image: '../../../assets/images/logo-splashscreen.png';
+@import '../../styles.scss';
+
+.landingpage {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $landingpage-background;
+}
+
+.container--top,
+.container--bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.container--top {
+  flex: 2;
+  justify-content: flex-end;
+}
+
+.container--bottom {
+  flex: 3;
+  justify-content: flex-start;
+}
+
+.logo {
+  background-image: url("../../assets/images/logo-splashscreen.png");
+  width: 80%;
+  height: 275px;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
+  background-position: center;
+}
+
+.slogan {
+  color: mat-color($app-primary);
+}
+
+.claim {
+  font-weight: bold;
+}
+
+%text {
+  opacity: .6;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+
+.description-text {
+  @extend %text;
+  font-weight: 400;
+}
+
+.vendor-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  
+  & * {
+    vertical-align: middle;
+  }
+}
+
+.powered-by {
+  @extend %text;
+  margin-right: 10px;
+}
+
+.next {
+  margin-top: 30px;
+  align-self: stretch;
+}
+
+.join-button {
+  border-radius: 20px;
 }

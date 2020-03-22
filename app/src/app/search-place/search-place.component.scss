@@ -1,0 +1,56 @@
+@import '../../styles.scss';
+
+.app-title {
+    text-transform: uppercase;
+    color: $color-light;
+}
+
+.mat-toolbar {
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.search {
+    padding: 27px;
+}
+
+.place-img {
+    width: 80px;
+    height: 80px;
+}
+
+.place {
+    width: 100%;
+    margin: 4px;
+}
+
+.card-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-content-name {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.card-content-subtitle {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.mat-card-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,63 @@
+<app-toolbar backLink="/search"></app-toolbar>
+
+<div *ngIf="!place" class="place-page place-page--loading">
+  <mat-spinner color="primary"></mat-spinner>
+</div>
+<div *ngIf="place" class="place-page">
+  <div
+    class="image"
+    [ngStyle]="{ 'background-image': 'url(' + place.imageUrl + ')' }"
+  >
+    <span class="name" (click)="editField('name', 'Name')">
+      {{ place.name }}
+      <mat-icon
+        class="edit-name-icon"
+        color="primary"
+        aria-hidden="false"
+        aria-label="Lokal besuchen"
+      >
+        edit
+      </mat-icon>
+    </span>
+    <mat-icon
+        class="edit-image-icon"
+        color="primary"
+        aria-hidden="false"
+        aria-label="Lokal besuchen"
+        (click)="editField('imageUrl', 'Bild-URL')"
+      >
+        edit
+    </mat-icon>
+  </div>
+  <span class="info">
+    {{ place.city }} - {{ place.street }}
+  </span>
+
+  <mat-divider></mat-divider>
+
+  <div class="type-container">
+    <p class="text">
+      Wähle aus, ob deine Gäste bei dir Café und Kuchen oder Bier und Burger bekommen können.
+    </p>
+    <mat-form-field class="form-field">
+      <mat-label>Art der Lokalität</mat-label>
+      <mat-select [(ngModel)]="type">
+        <mat-option value="CAFE">Café</mat-option>
+        <mat-option value="BAR">Bar</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="paypal-container">
+    <p class="text">
+      Gib hier die E-Mail-Adresse an, mit der dein PayPal-Konto verknüpft ist oder deinen pserönlichen <a href="https://www.paypal.com/de/webapps/mpp/paypal-me" target="_blank">PayPal.me-Link.</a>
+    </p>
+    <mat-form-field class="form-field">
+      <mat-label>PayPal-Konto</mat-label>
+      <input matInput required [(ngModel)]="paypal" placeholder="https:/paypal.me/meine_bar">
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" class="register-button" [disabled]="!valid()" (click)="registerPlace()">Jetzt registrieren</button>
+  </div>
+
+</div>
