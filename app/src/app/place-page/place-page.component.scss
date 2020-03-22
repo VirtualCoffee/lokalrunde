@@ -3,6 +3,7 @@
 .place-page {
   height: 100%;
   padding: 20px;
+  padding-bottom: auto;
 }
 
 .place-page--loading {
@@ -132,4 +133,27 @@
   align-self: center;
   border-radius: 20px;
   padding: 0 32px;
+}
+
+.buyaround-section {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.9);
+  height: 56px;
+  width: 100vw;
+  z-index:1000;
+}
+
+.buyaround-button {
+  border-radius: 20px;
+  width: 70vw;
+}
+
+.buyaround-button:before {
+  content: url("../../assets/images/icon-buyaround.png");
+  padding-right: 10px;
+  top: 10px;
 }

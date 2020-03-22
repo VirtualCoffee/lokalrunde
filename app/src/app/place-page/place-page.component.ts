@@ -38,6 +38,7 @@ export class PlacePageComponent {
       BEER: "../../assets/images/icon-drink.svg",
       CAKE: "../../assets/images/icon-food.svg",
       BURGER: "../../assets/images/icon-food.svg",
+      BUYAROUND: "../../assets/images/icon-localround.svg",
     }[type];
   }
 
