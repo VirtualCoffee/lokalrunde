@@ -1,7 +1,10 @@
+@import '../../styles.scss';
+
 .landingpage {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: $landingpage-background;
 }
 
 .container--top,
@@ -13,7 +16,7 @@
 }
 
 .container--top {
-  flex: 4;
+  flex: 2;
   justify-content: flex-end;
 }
 
@@ -25,10 +28,14 @@
 .logo {
   background-image: url("../../assets/images/logo-splashscreen.png");
   width: 80%;
-  height: 225px;
+  height: 275px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.slogan {
+  color: mat-color($app-primary);
 }
 
 .claim {
@@ -37,14 +44,14 @@
 
 %text {
   opacity: .6;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.25px;
 }
 
 .description-text {
   @extend %text;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .vendor-images {
@@ -66,4 +73,8 @@
 .next {
   margin-top: 45px;
   align-self: stretch;
+}
+
+.join-button {
+  border-radius: 20px;
 }

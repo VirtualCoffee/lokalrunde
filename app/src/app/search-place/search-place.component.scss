@@ -5,9 +5,13 @@
     color: $color-light;
 }
 
-.flex-divider {
-    width: 100px;
+.mat-toolbar {
+    justify-content: space-between;
+    align-items: center;
+}
 
+mat-form-field {
+    width: 100%;
 }
 
 .search {
@@ -17,10 +21,6 @@
 .place-img {
     width: 80px;
     height: 80px;
-}
-
-mat-form-field {
-    width: 100%;
 }
 
 .place {

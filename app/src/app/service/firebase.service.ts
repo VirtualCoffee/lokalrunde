@@ -11,7 +11,7 @@ export class FirebaseService {
   constructor(public db: AngularFirestore) { }
 
   public getPlaces(): any {
-    return this.db.collection('locations').valueChanges();
+    return this.db.collection('locations').valueChanges({idField: 'id'});
   }
 
   /**
