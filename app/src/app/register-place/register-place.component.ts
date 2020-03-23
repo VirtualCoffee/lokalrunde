@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog"
-import { MatSnackBar } from "@angular/material/snack-bar"
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FirebaseService } from '../service/firebase.service';
-import { LRLocation, LocationDetail, LocationType } from "../../../../functions/src/model/base"
+import { LocationDetail, LocationType, LRLocation } from '../../../../functions/src/model/base';
 
 @Component({
   selector: 'app-register-place',
@@ -14,8 +14,8 @@ export class RegisterPlaceComponent {
 
   public place: Partial<LRLocation> = {};
   public placeDetail: Partial<LocationDetail> = {};
-  public type = "CAFE";
-  public paypal = "";
+  public type = 'CAFE';
+  public paypal = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +24,8 @@ export class RegisterPlaceComponent {
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {
-    const googlePlaceId = route.snapshot.paramMap.get("googlePlaceId");
-    
+    const googlePlaceId = route.snapshot.paramMap.get('googlePlaceId');
+
     firebaseService.getGooglePlace(googlePlaceId).then((result) => {
       const { data } = result;
       this.place = {
@@ -35,24 +35,24 @@ export class RegisterPlaceComponent {
         city: data.city,
         street: data.street,
         zipCode: data.zipCode,
-      }
+      };
 
       this.placeDetail = {
         lat: data.latitude,
         lng: data.longitude,
         website: data.website,
-      }
+      };
 
-      const type = (data.type || "cafe").toLowerCase();
-      this.type = type.includes("bar") ? "BAR" : "CAFE";
+      const type = (data.type || 'cafe').toLowerCase();
+      this.type = type.includes('bar') ? 'BAR' : 'CAFE';
     }).catch(err => {
       console.error(err);
-    })
-    
+    });
+
   }
 
   public editField(field: string, title: string) {
-    const dialogRef = this.dialog.open(EditDialog, {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '250px',
       data: { field, title, value: this.place[field] }
     });
@@ -74,7 +74,7 @@ export class RegisterPlaceComponent {
   registerPlace() {
     this.firebaseService.addPlace({
       ...(this.place as any),
-      type: this.type === "BAR" ? LocationType.BAR : LocationType.CAFE,
+      type: this.type === 'BAR' ? LocationType.BAR : LocationType.CAFE,
     }, {
       ...(this.placeDetail as any),
       donationLink: this.paypal.match(/https:\/\/paypal\.me\/.+/) ? this.paypal : null,
@@ -82,21 +82,21 @@ export class RegisterPlaceComponent {
     }).then(id => {
       this.router.navigate([`place/${id}`]);
     }).catch(err => {
-      this.snackBar.open("Da ist etwas schief gelaufen.", undefined, { duration: 5000 });
-    })
+      this.snackBar.open('Da ist etwas schief gelaufen.', undefined, { duration: 5000 });
+    });
   }
 
 }
 
 
-type DialogData = {
-  title: string
-  value: string
+interface DialogData {
+  title: string;
+  value: string;
 }
 
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
+  selector: 'app-dialog-overview-example-dialog',
   template: `
     <h1 mat-dialog-title>{{data.title}}</h1>
     <div mat-dialog-content>
@@ -110,14 +110,10 @@ type DialogData = {
     </div>
   `
 })
-export class EditDialog {
+export class EditDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<EditDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
+    public dialogRef: MatDialogRef<EditDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
-
 }

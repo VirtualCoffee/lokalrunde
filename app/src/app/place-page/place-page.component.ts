@@ -16,7 +16,7 @@ export class PlacePageComponent {
   public products?: Product[];
 
   get normalProducts(): Product[] {
-    return this.products.filter(p => p.type !== ProductType.BUYAROUND)
+    return this.products.filter(p => p.type !== ProductType.BUYAROUND);
   }
 
   get buyaroundProduct(): Product {
@@ -42,11 +42,11 @@ export class PlacePageComponent {
 
   public getTypeIcon(type: string): string {
     return {
-      COFFEE: "../../assets/images/icon-coffee.svg",
-      BEER: "../../assets/images/icon-drink.svg",
-      CAKE: "../../assets/images/icon-food.svg",
-      BURGER: "../../assets/images/icon-food.svg",
-      BUYAROUND: "../../assets/images/icon-buyaround.svg",
+      COFFEE: '../../assets/images/icon-coffee.svg',
+      BEER: '../../assets/images/icon-drink.svg',
+      CAKE: '../../assets/images/icon-food.svg',
+      BURGER: '../../assets/images/icon-food.svg',
+      BUYAROUND: '../../assets/images/icon-buyaround.svg',
     }[type];
   }
 

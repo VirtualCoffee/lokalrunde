@@ -10,8 +10,8 @@ export interface LRLocation {
 }
 
 export enum LocationType {
-  BAR = "BAR",
-  CAFE = "CAFE"
+  BAR = 'BAR',
+  CAFE = 'CAFE'
 }
 
 export interface LocationDetail {
@@ -32,9 +32,9 @@ export interface Product {
 }
 
 export enum ProductType {
-  COFFEE = "COFFEE",
-  CAKE = "CAKE",
-  BEER = "BEER",
-  BURGER = "BURGER",
-  BUYAROUND = "BUYAROUND"
+  COFFEE = 'COFFEE',
+  CAKE = 'CAKE',
+  BEER = 'BEER',
+  BURGER = 'BURGER',
+  BUYAROUND = 'BUYAROUND'
 }

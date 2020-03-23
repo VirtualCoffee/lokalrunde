@@ -1,23 +1,18 @@
-import { Injectable } from "@angular/core";
-import {
-  LRLocation,
-  Product,
-  LocationDetail,
-  ProductType,
-  LocationType
-} from "../model/base";
-import { AngularFirestore } from "@angular/fire/firestore";
-import { AngularFireFunctions } from "@angular/fire/functions";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { LocationDetail, LocationType, LRLocation, Product, ProductType } from '../model/base';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireFunctions } from '@angular/fire/functions';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class FirebaseService {
-  constructor(public db: AngularFirestore, public func: AngularFireFunctions) {}
+  constructor(public db: AngularFirestore, public func: AngularFireFunctions) {
+  }
 
   public getPlaces(): any {
-    return this.db.collection("locations").valueChanges({ idField: "id" });
+    return this.db.collection('locations').valueChanges({ idField: 'id' });
   }
 
   /**
@@ -29,18 +24,18 @@ export class FirebaseService {
 
   public getPlacesByCity(city: string): Observable<LRLocation[]> {
     return this.db
-      .collection<LRLocation>("locations", ref => ref.where("city", "==", city))
-      .valueChanges({ idField: "id" });
+      .collection<LRLocation>('locations', ref => ref.where('city', '==', city))
+      .valueChanges({ idField: 'id' });
   }
 
   public getPlaceByGooglePlaceId(
     googlePlaceId: string
   ): Observable<LRLocation[]> {
     const observable = this.db
-      .collection<LRLocation>("locations", ref =>
-        ref.where("googlePlaceId", "==", googlePlaceId)
+      .collection<LRLocation>('locations', ref =>
+        ref.where('googlePlaceId', '==', googlePlaceId)
       )
-      .valueChanges({ idField: "id" });
+      .valueChanges({ idField: 'id' });
     return observable;
   }
 
@@ -50,18 +45,18 @@ export class FirebaseService {
   public getPlaceDetails(id: string): Observable<LocationDetail[]> {
     return this.db
       .doc<LRLocation>(`locations/${id}`)
-      .collection<LocationDetail>("details")
+      .collection<LocationDetail>('details')
       .valueChanges();
   }
 
   /**
-   @param id - id of a location document inside firebase store
+   * @param id - id of a location document inside firebase store
    */
   public getProductsForPlace(id: string): Observable<Product[]> {
     return this.db
       .doc(`locations/${id}`)
-      .collection<Product>("products", ref => ref.orderBy("price", "asc"))
-      .valueChanges({ idField: "id" });
+      .collection<Product>('products', ref => ref.orderBy('price', 'asc'))
+      .valueChanges({ idField: 'id' });
   }
 
   /**
@@ -83,53 +78,55 @@ export class FirebaseService {
   public async addPlace(location: LRLocation, locationDetail: LocationDetail) {
     // check if place already exists
     const locationSearch = await this.db
-      .collection<LRLocation>("locations", ref =>
-        ref.where("googlePlaceId", "==", location.googlePlaceId)
+      .collection<LRLocation>('locations', ref =>
+        ref.where('googlePlaceId', '==', location.googlePlaceId)
       )
       .get()
       .toPromise();
 
-    if (!locationSearch.empty) throw new Error("Locations already exists");
+    if (!locationSearch.empty) {
+      throw new Error('Locations already exists');
+    }
 
     return this.db
-      .collection("locations")
+      .collection('locations')
       .add(location)
       .then(docRef => {
         docRef
-          .collection("details")
-          .doc("details")
+          .collection('details')
+          .doc('details')
           .set(locationDetail);
 
         const productsCafe: Product[] = [
           {
-            name: "Kaffee",
+            name: 'Kaffee',
             type: ProductType.COFFEE,
             price: 2.5
           },
           {
-            name: "Kuchen",
+            name: 'Kuchen',
             type: ProductType.CAKE,
             price: 5.0
           },
           {
-            name: "Lokalrunde",
+            name: 'Lokalrunde',
             type: ProductType.BUYAROUND,
             price: 20.0
           }
         ];
         const productsBar: Product[] = [
           {
-            name: "Bier",
+            name: 'Bier',
             type: ProductType.BEER,
             price: 2.5
           },
           {
-            name: "Burger",
+            name: 'Burger',
             type: ProductType.BURGER,
             price: 5.0
           },
           {
-            name: "Lokalrunde",
+            name: 'Lokalrunde',
             type: ProductType.BUYAROUND,
             price: 20.0
           }
@@ -137,11 +134,11 @@ export class FirebaseService {
 
         if (location.type === LocationType.BAR) {
           productsBar.forEach(async product => {
-            await docRef.collection("products").add(product);
+            await docRef.collection('products').add(product);
           });
         } else if (location.type === LocationType.CAFE) {
           productsCafe.forEach(async product => {
-            await docRef.collection("products").add(product);
+            await docRef.collection('products').add(product);
           });
         }
 
@@ -150,20 +147,20 @@ export class FirebaseService {
   }
 
   public getGooglePlace(googlePlaceId: string): Promise<{ data: GooglePlaceModule }> {
-    return this.func.functions.httpsCallable("place")({ googlePlaceId }) as Promise<any>;
+    return this.func.functions.httpsCallable('place')({ googlePlaceId }) as Promise<any>;
   }
 }
 
-type GooglePlaceModule = {
-  name: string
-  address: string
-  website: string
-  imageUrl: string
-  googlePlaceId: string
-  type: string
-  street: string
-  city: string
-  zipCode: string
-  latitude: number
-  longitude: number
+interface GooglePlaceModule {
+  name: string;
+  address: string;
+  website: string;
+  imageUrl: string;
+  googlePlaceId: string;
+  type: string;
+  street: string;
+  city: string;
+  zipCode: string;
+  latitude: number;
+  longitude: number;
 }
