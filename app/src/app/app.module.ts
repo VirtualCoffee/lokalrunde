@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
-import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -41,36 +40,21 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fab, faFacebookF, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import {
+  faCheck,
   faCoffee,
   faCommentAlt,
+  faEnvelope,
   faExclamation,
   faLink,
   faMinus,
   faPrint,
-  fas,
-  faCheck,
-  faEnvelope
+  fas
 } from '@fortawesome/free-solid-svg-icons';
-import { RegisterPlaceComponent, EditDialogComponent } from './register-place/register-place.component';
+import { EditDialogComponent, RegisterPlaceComponent } from './register-place/register-place.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { DemobannerComponent } from './demobanner/demobanner.component';
+import { MaterialModule } from './common/material/material.module';
 
-const appRoutes: Routes = [
-  { path: '', component: LandingpageComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'search', component: SearchPlaceComponent },
-  { path: 'place/create', component: CreatePlaceComponent },
-  { path: 'place/:id', component: PlacePageComponent },
-  { path: 'place/:id/donate/:productId', component: DonateComponent },
-  {
-    path: 'place/:id/completed-donation',
-    component: CompletedDonationPageComponent
-  },
-  { path: 'imprint', component: ImprintComponent },
-  { path: 'terms', component: TermsComponent },
-  { path: 'privacy', component: PrivacyComponent },
-  { path: 'register/:googlePlaceId', component: RegisterPlaceComponent },
-];
 
 @NgModule({
   declarations: [
@@ -98,9 +82,6 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireFunctionsModule,
-    RouterModule.forRoot(
-      appRoutes,
-    ),
     FormsModule,
     MatButtonModule,
     MatToolbarModule,
@@ -117,11 +98,12 @@ const appRoutes: Routes = [
     MatMenuModule,
     MatDialogModule,
     MatSnackBarModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    MaterialModule,
     // other imports here
   ],
   providers: [
-      { provide: REGION, useValue: 'europe-west1' }
+    { provide: REGION, useValue: 'europe-west1' }
   ],
   entryComponents: [AppComponent, EditDialogComponent],
   bootstrap: [AppComponent]
