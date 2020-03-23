@@ -1,7 +1,7 @@
 @import "../../styles.scss";
 
 .completed-donation {
-  height: 100vh;
+  min-height: 100%;
   color: $primary;
   background: $landingpage-background;
 }
@@ -35,6 +35,7 @@
 .share-buttons {
   flex-direction: row;
   flex-wrap: initial;
+  margin-bottom: 20px;
 }
 
 .explanation-text {
