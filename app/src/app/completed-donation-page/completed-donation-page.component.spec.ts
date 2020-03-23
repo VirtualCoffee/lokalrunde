@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CompletedDonationPageComponent } from './completed-donation-page.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('CompletedDonationPageComponent', () => {
   let component: CompletedDonationPageComponent;
@@ -8,7 +9,10 @@ describe('CompletedDonationPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CompletedDonationPageComponent ]
+      declarations: [ CompletedDonationPageComponent ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
     })
     .compileComponents();
   }));
